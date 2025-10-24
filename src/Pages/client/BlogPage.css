@@ -1,0 +1,28 @@
+.card {
+  border-radius: 20px !important;
+}
+
+.object-fit-cover {
+  object-fit: cover;
+}
+
+.badge.bg-success-subtle {
+  background-color: #d1f2d8;
+}
+
+.hero-section button:hover {
+  background-color: #ffc107;
+  color: #0b3b2e;
+  transition: 0.3s ease;
+}
+.btn-outline-warning a {
+  color: #ffc107; /* default text color (warning) */
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.btn-outline-warning a:hover {
+  color: black; /* change text to black on hover */
+}

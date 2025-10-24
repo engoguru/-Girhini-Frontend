@@ -1,0 +1,68 @@
+.causes-section {
+  background-color: #ffffff;
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+/* === Cause Cards === */
+.cause-card {
+  border-radius: 20px;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  background-color: #f9f9f9;
+}
+
+.cause-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.cause-card img {
+  height: 220px;
+  object-fit: cover;
+}
+
+.donate-btn {
+  background-color: #0b3b2e;
+  color: #ffffff;
+  border: none;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  transition: background-color 0.3s;
+}
+
+.donate-btn:hover {
+  background-color: #0e5a47;
+  color: #fff;
+}
+
+/* === Featured Campaign === */
+.featured-campaign {
+  background-color: #f4f7f5;
+  border-radius: 25px;
+  padding: 40px;
+}
+
+.featured-campaign img {
+  max-height: 300px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.progress {
+  background-color: #dcdcdc;
+  height: 8px;
+}
+
+.progress-bar {
+  background-color: #0b3b2e;
+}
+
+@media (max-width: 768px) {
+  .cause-card img {
+    height: 200px;
+  }
+  .featured-campaign {
+    padding: 20px;
+  }
+}

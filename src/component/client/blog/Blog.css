@@ -1,0 +1,40 @@
+.blog-section {
+  background-color: #fff;
+}
+
+.blog-heading {
+  position: relative;
+  display: inline-block;
+}
+
+.blog-heading::after {
+  content: "";
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  width: 50%;
+  height: 3px;
+  background-color: #f9b233; /* Yellow underline */
+}
+
+.blog-card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+.blog-card h5 {
+  color: #0b3b2e;
+  margin-bottom: 8px;
+}
+
+.blog-card p {
+  font-size: 0.95rem;
+  color: #555;
+}
+
+@media (max-width: 768px) {
+  .blog-card img {
+    height: 220px;
+  }
+}

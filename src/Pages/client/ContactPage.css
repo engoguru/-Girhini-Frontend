@@ -1,0 +1,28 @@
+.contact-section input,
+.contact-section select,
+.contact-section textarea {
+  border: 1px solid #ccc;
+  transition: 0.3s ease;
+}
+
+.contact-section input:focus,
+.contact-section select:focus,
+.contact-section textarea:focus {
+  border-color: #0b3b2e;
+  box-shadow: 0 0 0 0.2rem rgba(11, 59, 46, 0.1);
+}
+
+.direct-contact-section img {
+  width: 100%;
+  height: 30 0px;
+  object-fit: cover;
+}
+
+.contact-info-item {
+  background: #f9f9f9;
+  border-radius: 50px;
+  padding: 10px 20px;
+  min-width: 220px;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
