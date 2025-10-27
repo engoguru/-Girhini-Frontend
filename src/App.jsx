@@ -13,7 +13,8 @@ import Admin from './Pages/admin/Admin'
 import Contact from './Pages/admin/Contact'
 import ContactMeet from './component/admin/contact/ContactMeet'
 import User from './Pages/client/User'
-import Program from './Pages/admin/program'
+// import Program from './Pages/admin/Program'
+import  Program from "./Pages/admin/Program"
 import ProgramView from './Pages/client/ProgramView'
 import Blog from './Pages/admin/Blog'
 import BlogDetail from './Pages/client/BlogDetail'
@@ -25,6 +26,7 @@ import Register from './Pages/client/Register'
 // here all file is admin
 import { useDispatch, useSelector } from "react-redux"
 import { fetchUser } from "./store/slice/userSlice"
+import Program from './Pages/admin/program'
 
 function App() {
 
@@ -55,7 +57,8 @@ function App() {
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="contact" element={<Contact />} />
           <Route path="contact/contact-meet" element={<ContactMeet />} />
-          <Route path="program" element={<Program />} />
+          {/* <Route path="program" element={<Program />} /> */}
+          <Route  path="path" element={<Program/>}/>
           <Route path="blog" element={<Blog />} />
           <Route path="gallery" element={<Gallery />} />
           <Route path="review" element={<Review />} />
