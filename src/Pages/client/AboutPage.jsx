@@ -85,7 +85,7 @@ function AboutPage() {
             Girhini Swayam Swarojgar Sangh, Kangra, Himachal Pradesh, works to promote self-reliance, education, and community development. We bring people together to create positive change and a brighter future.
           </p>
           <Link to={"/contact-us"} className="btn btn-warning text-dark fw-semibold mt-3 px-4 py-2 rounded-pill">
-            EXPLORE MORE
+            EXPLORE MORE ..
           </Link>
         </div>
       </section>
