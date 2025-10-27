@@ -11,7 +11,7 @@ function AboutReviewSection({review}) {
   return (
     <section className="review-section py-5">
       <div className="container text-center text-white mb-5">
-        <h2 className="fw-bold">
+        <h2 className="fw-bold" style={{color:"#0b3b2e"}}>
           See words from our <span className="text-warning">wellbeing</span>
         </h2>
       </div>
@@ -29,7 +29,7 @@ function AboutReviewSection({review}) {
           }}
           className="mySwiper"
         >
-          {review.map((review, index) => (
+          {review?.map((review, index) => (
             <SwiperSlide key={index}>
               <div className="review-card p-4 text-start rounded-4">
                 {/* Profile */}

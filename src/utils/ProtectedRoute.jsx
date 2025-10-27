@@ -1,11 +1,26 @@
 import { Navigate, Outlet } from "react-router-dom";
-
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { fetchUser } from "../store/slice/userSlice";
 function ProtectedRoute({ allowedRole }) {
-  const meDetail = allowedRole; // replace with real auth later
-  
-  if (meDetail !==allowedRole) {
-    return <Navigate to="/auth-user" replace />;
-  }
+  const dispatch = useDispatch();
+  const { meDetail, loading } = useSelector((state) => state?.user);
+
+  useEffect(() => {
+    if (!meDetail) dispatch(fetchUser());
+  }, [dispatch, meDetail]);
+
+  // Show nothing or a loader while fetching
+  if (!meDetail && loading) return <div>Loading...</div>;
+
+  // User not fetched yet
+  if (!meDetail) return null;
+
+  const hasAccess = Array.isArray(allowedRole)
+    ? allowedRole.includes(meDetail.role)
+    : meDetail.role === allowedRole;
+
+  if (!hasAccess) return <Navigate to="/" replace />;
 
   return <Outlet />;
 }

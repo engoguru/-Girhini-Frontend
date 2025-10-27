@@ -1,5 +1,6 @@
 import React from "react";
 import "./Causes.css";
+import { Link, Links } from "react-router-dom";
 
 function CausesFeature({ causes }) {
   const featuredCause = causes?.find(
@@ -24,9 +25,15 @@ function CausesFeature({ causes }) {
         </div>
 
         {/* === Causes Cards === */}
-        <div className="row g-4 mb-5">
+        <div className="row g-2 mb-3">
+              <div className="d-flex mb-2">
+                      <Link to="/popular-ngo-program" className="ms-auto btn donate-btn px-4 py-2 rounded-pill fw-semibold">
+                        View More.
+                      </Link>
+                    </div>
           {causes
             ?.filter((cause) => cause.programType === "Causes")
+               .slice(0, 3)
             .map((cause, index) => (
               <div className="col-lg-4 col-md-6 col-sm-12" key={index}>
                 <div className=" cause-card border-0 shadow-sm rounded-4 h-100">

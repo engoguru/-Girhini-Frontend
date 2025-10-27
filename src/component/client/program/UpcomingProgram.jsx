@@ -21,9 +21,15 @@ function UpcomingProgram({ program }) {
             </p>
           </div>
 
-          <div className="row g-4">
+          <div className="row g-1">
+             <div className="d-flex mb-2">
+                      <Link to="/popular-ngo-program" className="ms-auto btn donate-btn px-4 py-2 rounded-pill fw-semibold">
+                        View More.
+                      </Link>
+                    </div>
             {program
               ?.filter(item => item.programType === "Upcoming") 
+               .slice(0, 3)
               .map((item, index) => (
                 <div key={index} className="col-lg-4 col-md-6 col-sm-12 px-1 py-2">
                   <div className=" program-card shadow-sm border-0 rounded-4">

@@ -3,8 +3,9 @@ import Navbar from '../../component/client/common/Navbar';
 import Footer from '../../component/client/common/Footer';
 import axios from 'axios';
 import baseUrl from '../../utils/baseurl';
-
+import { useNavigate } from "react-router-dom";
 function User() {
+  const navigate = useNavigate()
   const [user, setUser] = useState(null);
   const [donations, setDonations] = useState([]);
   const [contacts, setContacts] = useState([]);
@@ -32,6 +33,23 @@ function User() {
 
     fetchData();
   }, []);
+
+
+
+const handleLogout = async () => {
+  try {
+    const res = await axios.post(
+      "http://localhost:4500/api/auth/logout",
+      {}, // no body needed for logout
+      {
+        withCredentials: true, // ✅ Correct syntax
+      }
+    );
+    navigate("/")
+  } catch (error) {
+    console.error(error.response?.data?.message || "Logout failed");
+  }
+};
 
   if (loading) return <div className="text-center mt-5">Loading...</div>;
 
@@ -93,7 +111,7 @@ function User() {
             </div>
           </div>
 
-          {/* <a href="#" className="btn btn-primary mt-2">Edit Profile</a> */}
+          <button onClick={handleLogout} className="btn btn-primary mt-2">Logout</button>
         </div>
       </div>
     </div>

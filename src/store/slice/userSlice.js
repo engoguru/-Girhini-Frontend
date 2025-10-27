@@ -20,7 +20,9 @@ export const loginUser = createAsyncThunk(
   "user/login",
   async (loginData, { rejectWithValue }) => {
     try {
-      const { data } = await axios.post(`${baseurl}/api/auth/login`, loginData);
+      const { data } = await axios.post(`${baseurl}/api/auth/login`, loginData,{
+  withCredentials: true, // ✅ send/receive cookies
+});
       return data;
     } catch (error) {
       return rejectWithValue(error.response?.data?.message || "Login failed");
@@ -33,19 +35,48 @@ export const verifyOtp = createAsyncThunk(
   "user/verifyOtp",
   async (otpData, { rejectWithValue }) => {
     try {
-      const { data } = await axios.post(`${baseurl}/api/auth/verify-otp`, otpData);
+      const { data } = await axios.post(`${baseurl}/api/auth/verify-otp`, otpData,{
+  withCredentials: true, // ✅ send/receive cookies
+});
       return data;
     } catch (error) {
       return rejectWithValue(error.response?.data?.message || "OTP verification failed");
     }
   }
+)
+export const fetchUser = createAsyncThunk(
+  "user/fetch",
+  async (_, { rejectWithValue }) => {
+    try {
+      const res = await axios.get(`${baseurl}/api/auth/get`, {
+        withCredentials: true, // ✅ Important: sends cookies
+      });
+      return res.data; // ✅ Correct variable
+    } catch (error) {
+      return rejectWithValue(
+        error.response?.data?.message || "Failed to fetch user details"
+      );
+    }
+  }
 );
+
+export const fetchAllUser =createAsyncThunk(
+  "user/fetchAll",
+  async()=>{
+    try {
+      
+    } catch (error) {
+      
+    }
+  }
+)
 
 // ========== INITIAL STATE ==========
 const initialState = {
   register: null,
   login: null,
   verify: null,
+  meDetail:null,
   loading: false,
   error: null,
 };
@@ -106,7 +137,24 @@ const userSlice = createSlice({
       .addCase(verifyOtp.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
+      })
+      
+      
+      
+      .addCase(fetchUser.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(fetchUser.fulfilled, (state, action) => {
+        state.loading = false;
+        state.meDetail = action.payload.user; // depends on backend response
+      })
+      .addCase(fetchUser.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
       });
+      
+      ;
   },
 });
 

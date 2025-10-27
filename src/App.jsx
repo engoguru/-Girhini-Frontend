@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Routes, Route, Link } from 'react-router-dom'
 import './App.css'
 import HomePage from './Pages/client/HomePage'
@@ -23,10 +23,18 @@ import About from './Pages/admin/About'
 import Register from './Pages/client/Register'
 
 // here all file is admin
+import { useDispatch, useSelector } from "react-redux"
+import { fetchUser } from "./store/slice/userSlice"
 
 function App() {
 
+  const dispatch = useDispatch()
+  const { meDetail } = useSelector((state) => state?.user)
 
+  useEffect(() => {
+    dispatch(fetchUser())
+  }, [dispatch])
+  console.log(meDetail, "jgioejfraefsdcfsaev")
   return (
     <>
       <Routes>
@@ -38,11 +46,11 @@ function App() {
         <Route path="/trending-blog" element={<BlogPage />} />
         <Route path="/popular-ngo-program/:id" element={<ProgramView />} />
         <Route path="/trending-blog/:id" element={<BlogDetail />} />
-        <Route path="/auth-user" element={<Register/>}/>
+        <Route path="/auth-user" element={<Register />} />
 
 
         {/* Protected-route-admin */}
-        <Route path="/admin" element={<ProtectedRoute allowedRole="Admin" />}>
+        <Route path="/admin" element={<ProtectedRoute allowedRole={["Admin"]} />}>
           <Route index element={<Admin />} />
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="contact" element={<Contact />} />
@@ -51,15 +59,16 @@ function App() {
           <Route path="blog" element={<Blog />} />
           <Route path="gallery" element={<Gallery />} />
           <Route path="review" element={<Review />} />
-          <Route path="about" element={<About/>}/>
+          <Route path="about" element={<About />} />
 
         </Route>
 
 
         {/* User Protected Routes */}
-        <Route path="/user" element={<ProtectedRoute allowedRole="" />}>
+        <Route path="/user" element={<ProtectedRoute allowedRole={["User", "Admin"]} />}>
           <Route path="dashboard" element={<User />} />
         </Route>
+
       </Routes>
     </>
   )
