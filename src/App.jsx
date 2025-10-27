@@ -26,7 +26,7 @@ import Register from './Pages/client/Register'
 // here all file is admin
 import { useDispatch, useSelector } from "react-redux"
 import { fetchUser } from "./store/slice/userSlice"
-import Program from './Pages/admin/program'
+
 
 function App() {
 
