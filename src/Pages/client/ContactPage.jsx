@@ -176,11 +176,11 @@ const handleSubmit = async (e) => {
             You can directly meet us <span className="text-warning">here</span>
           </h4>
 
-          <div className="card border-0 shadow-sm rounded-4 overflow-hidden p-3">
+          <div className="card border-0 shadow-sm rounded-4 overflow-hidden p-3" style={{height:"500px"}}>
             <img
-              src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=800&q=80"
+              src="https://images.unsplash.com/photo-1544005313-94ddf0286df2"
               alt="Contact Team"
-              className="img-fluid rounded-4 "
+              className="img-fluid rounded-4 h-50 "
             />
 
             <div className="d-flex flex-wrap justify-content-center gap-4 mt-4">

@@ -1,0 +1,44 @@
+/* Password field wrapper for show/hide */
+.password-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+/* Input padding to prevent overlap with button */
+.password-input {
+  width: 100%;
+  padding-right: 60px;
+}
+
+/* Show/Hide button inside input */
+.show-hide-btn {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  color: rgb(11, 59, 46);
+  user-select: none;
+}
+
+/* Submit buttons */                                                                                          
+
+
+.btn-submit {
+  background-color: rgb(15, 100, 79);
+  border: 1px solid rgb(15, 100, 79);
+  color: white;
+  padding: 6px 18px;
+  font-size: 0.875rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-submit:hover {
+  background-color: white;
+  color: rgb(15, 100, 79);
+  border-color: rgb(15, 100, 79);
+}
