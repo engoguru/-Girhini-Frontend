@@ -5,13 +5,11 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "./About.css";
 
-function AboutReviewSection({review}) {
- 
-
+function AboutReviewSection({ review }) {
   return (
     <section className="review-section py-5">
       <div className="container text-center text-white mb-5">
-        <h2 className="fw-bold" style={{color:"#0b3b2e"}}>
+        <h2 className="fw-bold" style={{ color: "#0b3b2e" }}>
           See words from our <span className="text-warning">wellbeing</span>
         </h2>
       </div>
@@ -48,11 +46,22 @@ function AboutReviewSection({review}) {
                 </div>
 
                 {/* Text */}
-                <p className="text-light opacity-75">{review.description}</p>
+                <p className="text-light opacity-75 hover-text-dark">
+                  {review.description}
+                </p>
 
                 {/* Footer */}
-                <p className="fw-semibold text-warning mt-3">{review.name}-{review.country}-{review.organization}</p>
-           
+                <p className="mt-3 text-warning">
+                  <span className="font-semibold text-lg text-yellow-500">
+                    {review.name}
+                  </span>
+                  <span className="mx-1 text-sm text-gray-500">
+                    • {review.country}
+                  </span>
+                  <span className="block text-xs text-gray-400">
+                    {review.organization}
+                  </span>
+                </p>
               </div>
             </SwiperSlide>
           ))}

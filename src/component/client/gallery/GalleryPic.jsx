@@ -1,9 +1,9 @@
 import React from "react";
 import "./Gallery.css";
-import { Link } from "react-router-dom";
+import { Link,useLocation } from "react-router-dom";
 
 function GalleryPic({ gallery }) {
-
+ const location = useLocation();
   // console.log(gallery,"gal")
   return (
     <section className="gallery-section">
@@ -17,11 +17,16 @@ function GalleryPic({ gallery }) {
       </div>
       {/* Gallery Grid */}
       <div className="container py-3">
-        <div className="d-flex mb-2">
-          <Link to="/gallery" className="ms-auto btn donate-btn px-4 py-2 rounded-pill fw-semibold">
-            View More.
-          </Link>
-        </div>
+             {location.pathname !== "/gallery" && (
+              <div className="d-flex mb-2">
+                <Link
+                  to="/popular-ngo-program"
+                  className="ms-auto btn donate-btn px-4 py-2 rounded-pill fw-semibold"
+                >
+                  View More.
+                </Link>
+              </div>
+            )}
 
         <div className="gallery-grid">
           {gallery[0]?.

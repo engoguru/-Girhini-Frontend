@@ -38,7 +38,7 @@ function Program() {
   const [images, setImages] = useState([]);
 
   const toggleSidebar = () => setCollapsed(!collapsed);
-console.log(programData,"programData")
+// console.log(programData,"programData")
   // === Fetch all programs on mount ===
   useEffect(() => {
     dispatch(fetchAllProgram());

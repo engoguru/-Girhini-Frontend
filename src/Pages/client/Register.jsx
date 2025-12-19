@@ -3,6 +3,8 @@ import Navbar from "../../component/client/common/Navbar";
 import Footer from "../../component/client/common/Footer";
 import { useDispatch } from "react-redux";
 import { createUser, loginUser, verifyOtp } from "../../store/slice/userSlice";
+import { useNavigate } from "react-router-dom";
+import { fetchUser } from "../../store/slice/userSlice";
 import './Register.css';
 
 const navbarFooterStyle = {
@@ -29,6 +31,7 @@ const btnHoverStyle = {
 
 function Register() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [isLogin, setIsLogin] = useState(true);
   const [loginData, setLoginData] = useState({ email: "", password: "" });
   const [registerData, setRegisterData] = useState({ name: "", email: "", whatsAppNumber: "", password: "" });
@@ -47,8 +50,20 @@ function Register() {
     setMessage("");
     try {
       const res = await dispatch(loginUser(loginData));
+      
+      
       if (res.meta.requestStatus === "fulfilled") {
+        await dispatch(fetchUser())
         setMessage("Login successful!");
+
+        const role = res.payload.user.role;
+
+        if (role === "Admin") {
+          navigate('/admin/dashboard')
+        } else {
+          navigate('/user/dashboard')
+        }
+
         localStorage.setItem("userToken", res.payload.token);
       } else {
         setMessage(res.payload || "Login failed. Please try again.");

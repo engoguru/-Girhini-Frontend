@@ -9,13 +9,13 @@ const menuItems = [
   { name: "Dashboard", icon: <Home size={18} />, route: "/admin/dashboard" },
    { name: "Program", icon: <Inbox size={18} />, route: "/admin/program" },
   { name: "Contact", icon: <Inbox size={18} />, route: "/admin/contact" },
-  { name: "Home", icon: <Calendar size={18} />, route: "/admin/home" },
+  // { name: "Home", icon: <Calendar size={18} />, route: "/admin/home" },
   { name: "User", icon: <Search size={18} />, route: "/admin/user" },
    { name: "Blog", icon: <Search size={18} />, route: "/admin/blog" },
     { name: "Gallery", icon: <Search size={18} />, route: "/admin/gallery" },
      { name: "Review", icon: <Inbox size={18} />, route: "/admin/review" },
           { name: "About", icon: <Inbox size={18} />, route: "/admin/about" },
-  { name: "Settings", icon: <Settings size={18} />, route: "/admin/settings" },
+  // { name: "Settings", icon: <Settings size={18} />, route: "/admin/settings" },
 ];
 
 

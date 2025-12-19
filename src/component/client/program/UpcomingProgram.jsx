@@ -1,10 +1,10 @@
 import React from "react";
 import './Program.css'
-import { Link } from "react-router-dom";
+import { Link ,useLocation } from "react-router-dom";
 
 function UpcomingProgram({ program }) {
   
-
+  const location = useLocation();
   return (
     <>
       <section className="upcoming-section py-3">
@@ -22,11 +22,16 @@ function UpcomingProgram({ program }) {
           </div>
 
           <div className="row g-1">
-             <div className="d-flex mb-2">
-                      <Link to="/popular-ngo-program" className="ms-auto btn donate-btn px-4 py-2 rounded-pill fw-semibold">
-                        View More.
-                      </Link>
-                    </div>
+             {location.pathname !== "/popular-ngo-program" && (
+              <div className="d-flex mb-2">
+                <Link
+                  to="/popular-ngo-program"
+                  className="ms-auto btn donate-btn px-4 py-2 rounded-pill fw-semibold"
+                >
+                  View More.
+                </Link>
+              </div>
+            )}
             {program
               ?.filter(item => item.programType === "Upcoming") 
                .slice(0, 3)

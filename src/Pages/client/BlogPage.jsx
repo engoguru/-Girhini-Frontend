@@ -22,7 +22,7 @@ function BlogPage() {
    dispatch(fetchAllProgram());
     dispatch(fetchAllBlog())
   }, [dispatch]);
-  console.log(blogAll, "hgrth")
+  // console.log(blogAll, "hgrth")
 
   return (
     <>
@@ -150,23 +150,23 @@ function BlogPage() {
             </div> */}
 
             {/* Recent Savers */}
-      <div className="card border-0 shadow-sm p-4 mb-4 rounded-4">
+      {/* <div className="card border-0 shadow-sm p-4 mb-4 rounded-4">
   <h5 className="fw-bolder mb-3 text-dark">Recent Savers</h5>
   <ul className="list-unstyled mb-0">
     <li className="mb-2">
-      <strong className="font-sm text-dark">Jeff Bezos</strong> <br />
-      <small className="text-muted">$40M Donated</small>
+      <strong className="font-sm text-dark">R.K.Verma</strong> <br />
+      <small className="text-muted">40K Donated</small>
     </li>
     <li className="mb-2">
-      <strong className="font-sm text-dark">Mark Zuckerberg</strong> <br />
-      <small className="text-muted">$30M Donated</small>
+      <strong className="font-sm text-dark">Anuj Shekhar</strong> <br />
+      <small className="text-muted">30K Donated</small>
     </li>
     <li>
       <strong className="font-sm text-dark">Bill Gates</strong> <br />
       <small className="text-muted">$50M Donated</small>
     </li>
   </ul>
-</div>
+</div> */}
 
 
             {/* Categories */}

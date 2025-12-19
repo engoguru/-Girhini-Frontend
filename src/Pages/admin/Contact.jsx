@@ -18,7 +18,7 @@ function Contact() {
     dispatch(getContactsThunk());
   }, [dispatch]);
 
-  console.log(contactAll, "Fetched Contacts");
+  // console.log(contactAll, "Fetched Contacts");
   const toggleSidebar = () => setCollapsed(!collapsed);
 
   return (
@@ -37,7 +37,7 @@ function Contact() {
     <div className="row ms-auto">
       
      
-  <Link to={"/admin/contact/contact-meet"}>Contact-Meet</Link>
+  {/* <Link to={"/admin/contact/contact-meet"}>Contact-Meet</Link> */}
 
 
     </div>

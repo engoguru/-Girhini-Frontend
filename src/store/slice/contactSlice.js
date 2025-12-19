@@ -97,11 +97,16 @@ const contactSlice = createSlice({
         state.loading = true;
         state.error = null;
       })
-      .addCase(createContactThunk.fulfilled, (state, action) => {
-        state.loading = false;
-        state.success = 'Contact created successfully!';
-        state. contactAll.push(action.payload);
-      })
+  .addCase(createContactThunk.fulfilled, (state, action) => {
+  state.loading = false;
+  state.success = 'Contact created successfully!';
+  
+  // Ensure the payload exists before pushing
+  if (action.payload) {
+    state.contactAll=action.payload;
+  }
+})
+
       .addCase(createContactThunk.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;

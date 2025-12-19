@@ -4,13 +4,16 @@ import Footer from '../../component/client/common/Footer';
 import axios from 'axios';
 import baseUrl from '../../utils/baseurl';
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
+import { logoutUser } from '../../store/slice/userSlice';
 function User() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const dispatch=useDispatch()
   const [user, setUser] = useState(null);
   const [donations, setDonations] = useState([]);
   const [contacts, setContacts] = useState([]);
   const [loading, setLoading] = useState(true);
-
+  const { meDetail } = useSelector((state) => state?.user)
   useEffect(() => {
     // Simulated auth (replace with actual user ID or token logic)
     const fetchData = async () => {
@@ -36,21 +39,23 @@ function User() {
 
 
 
-const handleLogout = async () => {
+ const handleLogout = async () => {
   try {
-    const res = await axios.post(
-      "http://localhost:4500/api/auth/logout",
-      {}, // no body needed for logout
-      {
-        withCredentials: true, // ✅ Correct syntax
-      }
-    );
-    navigate("/")
+    // Log out on the server
+    await axios.post(`${baseUrl}/api/auth/logout`, {}, { withCredentials: true });
+
+    // Remove token locally
+    localStorage.removeItem("userToken");
+
+    // Update your user state/UI after logout
+   dispatch(logoutUser());; // make sure fetchUser handles "no token" case correctly
+
+    setShowMenu(false);
+    navigate("/");
   } catch (error) {
-    console.error(error.response?.data?.message || "Logout failed");
+    console.error("Logout error:", error);
   }
 };
-
   if (loading) return <div className="text-center mt-5">Loading...</div>;
 
   return (
@@ -88,7 +93,8 @@ const handleLogout = async () => {
       </section>
 
       <div className="container my-5">
-        <h2 className="mb-4">Welcome, {user?.name}</h2>
+      <h2 className="mb-4">Welcome to your dashboard!</h2>
+
 
         {/* USER PROFILE DETAILS */}
 
@@ -101,13 +107,13 @@ const handleLogout = async () => {
 
           <div className="card-text text-start p-2">
             <div className="border-bottom py-2">
-              <strong>Name:</strong> John Doe
+              <strong>Name:</strong> {meDetail?.email}
+            </div>
+            <div className="border-bottom py-2 text-sm">
+              <strong>Email:</strong>{meDetail?.whatsAppNumber}
             </div>
             <div className="border-bottom py-2">
-              <strong>Email:</strong> john@example.com
-            </div>
-            <div className="border-bottom py-2">
-              <strong>Role:</strong> User
+              <strong>Role:</strong> {meDetail?.role}
             </div>
           </div>
 
@@ -123,7 +129,7 @@ const handleLogout = async () => {
 
 
         {/* DONATION HISTORY */}
-        <div className="card mb-4">
+        {/* <div className="card mb-4">
           <div className="card-header">Your Donations</div>
           <div className="card-body">
             {donations.length === 0 ? (
@@ -138,10 +144,10 @@ const handleLogout = async () => {
               </ul>
             )}
           </div>
-        </div>
+        </div> */}
 
         {/* CONTACT SUBMISSIONS */}
-        <div className="card">
+        {/* <div className="card">
           <div className="card-header">Your Contact Requests</div>
           <div className="card-body">
             {contacts.length === 0 ? (
@@ -156,7 +162,7 @@ const handleLogout = async () => {
               </ul>
             )}
           </div>
-        </div>
+        </div> */}
       </div>
 
       <Footer />

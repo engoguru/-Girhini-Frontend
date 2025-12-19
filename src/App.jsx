@@ -26,6 +26,7 @@ import Register from './Pages/client/Register'
 // here all file is admin
 import { useDispatch, useSelector } from "react-redux"
 import { fetchUser } from "./store/slice/userSlice"
+import AdminUser from './Pages/admin/AdminUser'
 
 
 function App() {
@@ -35,7 +36,7 @@ function App() {
 
   useEffect(() => {
     dispatch(fetchUser())
-  }, [dispatch])
+  }, [])
   console.log(meDetail, "jgioejfraefsdcfsaev")
   return (
     <>
@@ -57,18 +58,19 @@ function App() {
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="contact" element={<Contact />} />
           <Route path="contact/contact-meet" element={<ContactMeet />} />
-          {/* <Route path="program" element={<Program />} /> */}
+          <Route path="program" element={<Program />} />
           <Route  path="path" element={<Program/>}/>
           <Route path="blog" element={<Blog />} />
           <Route path="gallery" element={<Gallery />} />
           <Route path="review" element={<Review />} />
           <Route path="about" element={<About />} />
+          <Route path="user" element={<AdminUser/>}/>
 
         </Route>
 
 
         {/* User Protected Routes */}
-        <Route path="/user" element={<ProtectedRoute allowedRole={["User", "Admin"]} />}>
+        <Route path="/user" element={<ProtectedRoute allowedRole={["User"]} />}>
           <Route path="dashboard" element={<User />} />
         </Route>
 

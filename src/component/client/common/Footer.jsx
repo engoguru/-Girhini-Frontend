@@ -125,22 +125,22 @@ function Footer() {
             <h6 className="text-uppercase fw-bold mb-3 text-start">Our Partners</h6>
             <ul className=" small text-start">
               <li>
-                <Link to="/donate" className="text-secondary text-decoration-none">
+                <Link to="/contact-us" className="text-secondary text-decoration-none">
                   Donate
                 </Link>
               </li>
               <li>
-                <Link to="/education" className="text-secondary text-decoration-none">
+                <Link to="/contact-us" className="text-secondary text-decoration-none">
                   Education
                 </Link>
               </li>
               <li>
-                <Link to="/save-children" className="text-secondary text-decoration-none">
+                <Link to="/contact-us" className="text-secondary text-decoration-none">
                   Save Children
                 </Link>
               </li>
               <li>
-                <Link to="/sustainable-development" className="text-secondary text-decoration-none">
+                <Link to="/contact-us" className="text-secondary text-decoration-none">
                   Sustainable Development
                 </Link>
               </li>
@@ -152,22 +152,22 @@ function Footer() {
             <h6 className="text-uppercase fw-bold mb-3 text-start">Services</h6>
             <ul className="text-start">
               <li>
-                <Link to="/educate-a-child" className="text-secondary text-decoration-none">
+                <Link to="/contact-us" className="text-secondary text-decoration-none">
                   Educate a child
                 </Link>
               </li>
               <li>
-                <Link to="/medical-support" className="text-secondary text-decoration-none">
+                <Link to="/contact-us" className="text-secondary text-decoration-none">
                   Medical support
                 </Link>
               </li>
               <li>
-                <Link to="/women-programs" className="text-secondary text-decoration-none">
+                <Link to="/contact-us" className="text-secondary text-decoration-none">
                   Women programs
                 </Link>
               </li>
               <li>
-                <Link to="/model-programs" className="text-secondary text-decoration-none">
+                <Link to="/contact-us" className="text-secondary text-decoration-none">
                   Model programs
                 </Link>
               </li>

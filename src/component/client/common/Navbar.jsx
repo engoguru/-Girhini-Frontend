@@ -1,17 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 import logo from "../../../assets/logo.png"
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchUser } from "../../../store/slice/userSlice";
 
 function Navbar() {
+  const dispatch=useDispatch()
+  const { meDetail } = useSelector((state) => state?.user)
+
+
   return (
     <nav
       className="navbar navbar-expand-lg navbar-dark py-0 rounded"
-      // style={{ backgroundColor: "#eaf1ef7e" }}
+    // style={{ backgroundColor: "#eaf1ef7e" }}
     >
       <div className="container">
         {/* Logo */}
         <Link to="/" className="navbar-brand fw-bold fs-4 text-warning text-decoration-none">
-       <img src={logo} alt="GSSS Logo" style={{ width: '150px', height: '70px',borderRadius :"10px" }} />
+          <img src={logo} alt="GSSS Logo" style={{ width: '150px', height: '70px', borderRadius: "10px" }} />
 
         </Link>
 
@@ -61,11 +67,31 @@ function Navbar() {
                 Contact
               </Link>
             </li>
-              <li className="nav-item">
-              <Link to="/user/dashboard" className="nav-link text-light">
-                Profile
-              </Link>
+            <li className="nav-item">
+
+              {/* Admin Dashboard Link */}
+              {meDetail?.role === "Admin" && (
+                <Link to="/admin/dashboard" className="nav-link text-light">
+                  Dashboard
+                </Link>
+              )}
+
+              {/* User Dashboard Link */}
+              {meDetail?.role === "User" && (
+                <Link to="/user/dashboard" className="nav-link text-light">
+                  Profile
+                </Link>
+              )}
+
+              {/* When NOT logged in */}
+              {!meDetail && (
+                <Link to="/auth-user" className="nav-link text-light">
+                  Login
+                </Link>
+              )}
+
             </li>
+
           </ul>
         </div>
       </div>

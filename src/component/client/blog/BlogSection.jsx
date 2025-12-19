@@ -1,8 +1,8 @@
 import React from "react";
 import "./Blog.css";
-  import { Link, useLocation } from "react-router-dom";
-function BlogSection({blogData}) {
-// console.log(blogData,"hh")
+import { Link, useLocation } from "react-router-dom";
+function BlogSection({ blogData }) {
+  // console.log(blogData,"hh")
   const location = useLocation();
   const blogs = [
     {
@@ -37,10 +37,10 @@ function BlogSection({blogData}) {
           <h2 className="fw-bold blog-heading">
             Blogs to <span className="text-warning">read</span>
           </h2>
-            {location?.pathname!=="/trending-blog" &&
-          <Link to={"/trending-blog"} target="top" className="btn btn-dark rounded-pill px-4 py-2 mt-3 mt-md-0">
-            READ MORE
-          </Link>
+          {location?.pathname !== "/trending-blog" &&
+            <Link to={"/trending-blog"} target="top" className="btn btn-dark rounded-pill px-4 py-2 mt-3 mt-md-0">
+              READ MORE
+            </Link>
           }
         </div>
 
@@ -55,17 +55,23 @@ function BlogSection({blogData}) {
                   className="img-fluid rounded-4 mb-3"
                 />
                 <h5 className="fw-semibold">{blog.heading}</h5>
-             <div
-  className="text-muted"
-  dangerouslySetInnerHTML={{ __html: blog.description }}
-></div>
+           {/*     <div
+                  className="text-muted"
+                  style={{ fontSize: "15px", color: "#9CA3AF" }}
+                  dangerouslySetInnerHTML={{
+                    __html: blog.description.split(" ").slice(0, 110).join(" ") + "..."
+                  }}
+                ></div>
 
-                <Link 
-  to={`/trending-blog/${blog?._id}`} 
-  className="btn btn-sm btn-success rounded-pill px-3"
->
-  READ MORE
-</Link>
+*/} 
+
+
+                <Link
+                  to={`/trending-blog/${blog?._id}`}
+                  className="btn btn-sm btn-success rounded-pill px-3"
+                >
+                  READ MORE
+                </Link>
 
               </div>
             </div>
@@ -75,5 +81,5 @@ function BlogSection({blogData}) {
     </section>
   );
 }
- 
+
 export default BlogSection;

@@ -2,9 +2,10 @@ import React, { useState, useEffect, useRef } from 'react';
 import Header from '../../component/admin/Common/Header';
 import Sidebar from '../../component/admin/Common/Sidebar';
 import { useDispatch } from 'react-redux';
-import { createBlog } from '../../store/slice/blogSlice';
+import { createBlog, fetchAllBlog } from '../../store/slice/blogSlice';
 import axios from 'axios';
 import JoditEditor from 'jodit-react';
+import baseUrl from '../../utils/baseurl';
 
 function Blog() {
   const dispatch = useDispatch();
@@ -28,8 +29,9 @@ function Blog() {
 
   const fetchBlogs = async () => {
     try {
-      const response = await axios.get('/api/blogs');
-      setBlogs(response.data);
+      const response = await dispatch(fetchAllBlog());
+
+      setBlogs(response);
     } catch (error) {
       console.error('Error fetching blogs:', error);
     }
@@ -72,6 +74,17 @@ function Blog() {
     }
   };
 
+  // console.log(blogs,"fgh")
+ const handleDelete = async (id) => {
+  try {
+    const res = await axios.delete(`${baseUrl}/api/blog/delete/${id}`);
+    console.log("Deleted:", res.data);
+    fetchBlogs();
+  }catch(error){
+console.log(error)
+  }
+}
+
   return (
     <>
       <div className="bg-black text-white min-vh-100">
@@ -93,7 +106,7 @@ function Blog() {
                 </div>
               </div>
 
-              {/* <div className="row">
+              <div className="row">
                 <table className="table table-dark table-striped align-middle">
                   <thead>
                     <tr>
@@ -102,11 +115,12 @@ function Blog() {
                       <th>Category</th>
                       <th>Description</th>
                       <th>Image</th>
+                      <th>Action</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {blogs?.length > 0 ? (
-                      blogs.map((blog, index) => (
+                    {blogs?.payload?.blogs?.length > 0 ? (
+                      blogs?.payload?.blogs?.map((blog, index) => (
                         <tr key={blog._id}>
                           <td>{index + 1}</td>
                           <td>{blog.heading}</td>
@@ -124,9 +138,20 @@ function Blog() {
                               src={blog.blogImage?.url}
                               alt="Blog"
                               width="100"
+                              height={"50"}
                               style={{ objectFit: 'cover' }}
                             />
                           </td>
+                     <td className="p-2">
+  <button
+    onClick={() => handleDelete(blog._id)}
+    className="bg-red-500 hover:bg-red-600 text-black px-4 py-2 rounded-lg shadow-md transition"
+  >
+    Delete
+  </button>
+</td>
+
+
                         </tr>
                       ))
                     ) : (
@@ -138,7 +163,7 @@ function Blog() {
                     )}
                   </tbody>
                 </table>
-              </div> */}
+              </div>
             </div>
           </main>
         </div>

@@ -51,6 +51,7 @@ export const fetchUser = createAsyncThunk(
       const res = await axios.get(`${baseurl}/api/auth/get`, {
         withCredentials: true, // ✅ Important: sends cookies
       });
+    
       return res.data; // ✅ Correct variable
     } catch (error) {
       return rejectWithValue(
@@ -90,9 +91,10 @@ const userSlice = createSlice({
       state.error = null;
     },
     logoutUser: (state) => {
-      state.login = null;
-      localStorage.removeItem("userToken");
-    },
+    state.login = null;
+    state.meDetail = null; // <-- clear user details
+    localStorage.removeItem("userToken");
+  },
   },
   extraReducers: (builder) => {
     builder
