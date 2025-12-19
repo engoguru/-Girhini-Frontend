@@ -155,9 +155,9 @@ const { galleryAll } = useSelector((state) => state.gallery);
 
         >
           <video
-            src="/video.mp4"
+            src="http://res.cloudinary.com/dorytukim/video/upload/v1766145204/about/qbdycv3ntuycwescz2vr.mp4"
             controls
-            poster="https://m.media-amazon.com/images/I/81EhZofH2RL._UF1000,1000_QL80_.jpg"
+            poster="https://res.cloudinary.com/dorytukim/image/upload/v1766144429/Gallery/lmtzjsopuygwbszaniwn.jpg"
             style={{ objectFit: "cover", width: "100%", height: "100%" }}
           ></video>
         </div>

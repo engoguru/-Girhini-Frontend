@@ -139,7 +139,7 @@ function AboutPage() {
             <video
               src={aboutData.aboutVideo.url}
               controls
-              poster="https://m.media-amazon.com/images/I/81EhZofH2RL._UF1000,1000_QL80_.jpg"
+              poster="https://res.cloudinary.com/dorytukim/image/upload/v1766144397/Gallery/kdoaimicbdfx7ufzctpy.jpg"
               style={{ objectFit: "cover", width: "100%", height: "100%" }}
             ></video>
           </div>
