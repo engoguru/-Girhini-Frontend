@@ -10,6 +10,14 @@ import Footer from "../../component/client/common/Footer";
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchAllAbout } from '../../store/slice/aboutSlice';
 import { Link } from 'react-router-dom';
+import Certificate from '../../component/client/about-us/Certificate';
+// import founder from "../../assets/ashok_president.jpg"
+import founder from "../../assets/asshok_president.jpg"
+import kosha from "../../assets/chanchal_koshaAdhsya.jpg"
+import vice from "../../assets/rajinder_vicepresident.jpg"
+import general   from "../../assets/rajni_general.jpg"
+
+ 
 
 function AboutPage() {
   const dispatch = useDispatch();
@@ -82,7 +90,7 @@ function AboutPage() {
             className="mt-3 text-light opacity-75 mx-auto fw-semibold"
             style={{ maxWidth: "700px" }}
           >
-            Girhini Swayam Swarojgar Sangh, Kangra, Himachal Pradesh, works to promote self-reliance, education, and community development. We bring people together to create positive change and a brighter future.
+            Girhini sawyam Swarojgar Sangh, Kangra, Himachal Pradesh, works to promote self-reliance, education, and community development. We bring people together to create positive change and a brighter future.
           </p>
           <Link to={"/contact-us"} className="btn btn-warning text-dark fw-semibold mt-3 px-4 py-2 rounded-pill">
             EXPLORE MORE ..
@@ -106,9 +114,106 @@ function AboutPage() {
       </div>
 
 
+{/* Founder Section */}
+<div className="meet-section text-center py-5">
+  <div className="container">
+    <h3 className="fw-bold mb-4">
+      Meet our <span className="text-warning">Founder Members</span>
+    </h3>
+
+    <Swiper
+      modules={[Autoplay, Pagination]}
+      slidesPerView={4}
+      spaceBetween={30}
+      loop={true}
+      pagination={{ clickable: true }}
+      autoplay={{ delay: 3000 }}
+      breakpoints={{
+        0: { slidesPerView: 2 },
+        768: { slidesPerView: 3 },
+        992: { slidesPerView: 4 },
+      }}
+      className="volunteer-swiper"
+    >
+{/* Founder Section */}
+<div className="meet-section text-center py-5">
+  <div className="container">
+    <h3 className="fw-bold mb-4">
+      Meet our <span className="text-warning">Founder Members</span>
+    </h3>
+
+    <Swiper
+      modules={[Autoplay, Pagination]}
+      slidesPerView={4}
+      spaceBetween={30}
+      loop={true}
+      pagination={{ clickable: true }}
+      autoplay={{ delay: 3000 }}
+      breakpoints={{
+        0: { slidesPerView: 2 },
+        768: { slidesPerView: 3 },
+        992: { slidesPerView: 4 },
+      }}
+      className="volunteer-swiper"
+    >
+      {[
+        { image: founder, name: "Dr. Ashok Kumar Pathania", role: "Founder & President" },
+        { image: kosha, name: "Chanchal Kumari", role: "Treasurer" },
+        { image: vice, name: "Rajinder Kaur", role: "Vice President" },
+        { image: general, name: "Rajni", role: "General Secretary" },
+      ].map((member, index) => (
+        <SwiperSlide key={index}>
+          <div className="volunteer-card text-center">
+            <img
+              src={member.image}
+              alt={`${member.name} - ${member.role}`}
+              className="rounded-circle shadow-sm mb-2"
+              style={{ width: "150px", height: "150px", objectFit: "cover" }}
+            />
+            <h6 className="fw-bold mb-1">{member.name}</h6>
+            <p className="text-muted small mb-0">{member.role}</p>
+          </div>
+        </SwiperSlide>
+      ))}
+    </Swiper>
+  </div>
+</div>
+
+    </Swiper>
+  </div>
+</div>
 
 
-      {/* ===== HELPED TILL NOW SECTION ===== */}
+  
+
+   {/* ===== VIDEO SECTION ===== */}
+{aboutData?.aboutVideo?.url && (
+  <div
+    className="video-wrapper-about my-5"
+    style={{
+      margin: "0 auto",
+      maxWidth: "800px",
+    }}
+  >
+    <div className="video-container mx-auto shadow rounded-4 overflow-hidden">
+      <video
+        src={aboutData.aboutVideo.url}
+        autoPlay
+        loop
+        muted
+        playsInline
+        controls
+        poster="https://res.cloudinary.com/dorytukim/image/upload/v1766144397/Gallery/kdoaimicbdfx7ufzctpy.jpg"
+        style={{ objectFit: "cover", width: "100%", height: "100%" }}
+      />
+    </div>
+  </div>
+)}
+
+
+      {/* certificate */}
+      <Certificate/>
+    {/* ===== HELPED TILL NOW SECTION ===== */}
       <div className="helped-section py-5 text-center">
         <div className="container">
           <h3 className="fw-bold mb-5">Helped till now</h3>
@@ -125,27 +230,6 @@ function AboutPage() {
           </div>
         </div>
       </div>
-
-      {/* ===== VIDEO SECTION ===== */}
-      {aboutData?.aboutVideo?.url && (
-        <div
-          className="video-wrapper-about my-5"
-          style={{
-            margin: "0 auto",
-            maxWidth: "800px",
-          }}
-        >
-          <div className="video-container mx-auto shadow rounded-4 overflow-hidden">
-            <video
-              src={aboutData.aboutVideo.url}
-              controls
-              poster="https://res.cloudinary.com/dorytukim/image/upload/v1766144397/Gallery/kdoaimicbdfx7ufzctpy.jpg"
-              style={{ objectFit: "cover", width: "100%", height: "100%" }}
-            ></video>
-          </div>
-        </div>
-      )}
-
       {/* ===== MEET OUR VOLUNTEERS ===== */}
       {volunteerList.length > 0 && (
         <div className="meet-section text-center py-5">

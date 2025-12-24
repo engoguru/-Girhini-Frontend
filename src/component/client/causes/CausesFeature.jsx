@@ -19,7 +19,7 @@ function CausesFeature({ causes }) {
             See the Impact, <span className="text-success"> Join the Change</span>
           </h3>
           <p className="text-muted mx-auto">
-            Girhini Swayam Swarojgar Sangh has transformed lives through education, healthcare, and community programs. Join us — connect, support, and make a difference!
+            Girhini sawyam Swarojgar Sangh has transformed lives through education, healthcare, and community programs. Join us — connect, support, and make a difference!
           </p>
 
         </div>

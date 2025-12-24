@@ -72,6 +72,13 @@
 
 import React,{useState,useEffect} from "react";
 import "./Home.css";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
+import { useRef } from "react";
+
 import Navbar from "../../component/client/common/Navbar";
 import Footer from "../../component/client/common/Footer";
 import UpcomingProgram from "../../component/client/program/UpcomingProgram";
@@ -88,6 +95,27 @@ import { fetchAllGallery } from "../../store/slice/gallerySlice";
 import { getAllreview } from "../../store/slice/reviewSlice";
 
 import { fetchAllAbout } from '../../store/slice/aboutSlice';
+
+
+
+const heroVideos = [
+  {
+    src: "http://res.cloudinary.com/dorytukim/video/upload/v1766145204/about/qbdycv3ntuycwescz2vr.mp4",
+    poster:
+      "https://res.cloudinary.com/dorytukim/image/upload/v1766144429/Gallery/lmtzjsopuygwbszaniwn.jpg",
+  },
+  {
+    src: "http://res.cloudinary.com/dorytukim/video/upload/v1766145204/about/video2.mp4",
+    poster:
+      "https://res.cloudinary.com/dorytukim/image/upload/v1766144429/Gallery/poster2.jpg",
+  },
+  {
+    src: "http://res.cloudinary.com/dorytukim/video/upload/v1766145204/about/video3.mp4",
+    poster:
+      "https://res.cloudinary.com/dorytukim/image/upload/v1766144429/Gallery/poster3.jpg",
+  },
+];
+
 
 function HomePage() {
     const dispatch=useDispatch();
@@ -148,7 +176,7 @@ const { galleryAll } = useSelector((state) => state.gallery);
       </section>
 
       {/* Video Section */}
-      <div className="video-wrapper mx-auto " 
+      {/* <div className="video-wrapper mx-auto " 
 >
         <div
           className="ratio ratio-16x9 rounded-4 overflow-hidden shadow video-size"
@@ -161,9 +189,63 @@ const { galleryAll } = useSelector((state) => state.gallery);
             style={{ objectFit: "cover", width: "100%", height: "100%" }}
           ></video>
         </div>
-      </div>
+      </div> */}
+{/* Video Section */}
+{/* Video Section */}
+<div className="video-wrapper mx-auto">
+  <Swiper
+    modules={[Pagination]}
+    pagination={{ clickable: true }}
+    slidesPerView={1}
+    spaceBetween={20}
+    loop={true}
+    onSwiper={(swiper) => {
+      setTimeout(() => {
+        const video = document.querySelectorAll(".hero-video")[swiper.activeIndex];
+        video?.play();
+      }, 300);
+    }}
+    onSlideChange={(swiper) => {
+      document.querySelectorAll(".hero-video").forEach((video, index) => {
+        if (index === swiper.activeIndex) {
+          video.play();
+        } else {
+          video.pause();
+          video.currentTime = 0;
+        }
+      });
+    }}
+  >
+    {heroVideos.map((item, index) => (
+      <SwiperSlide key={index}>
+        <div className="ratio ratio-16x9 rounded-4 overflow-hidden shadow video-size">
+          <video
+            className="hero-video"
+            src={item.src}
+            poster={item.poster}
+            muted
+            playsInline
+            controls
+            onEnded={(e) => {
+              const swiper = e.target.closest(".swiper")?.swiper;
+              swiper?.slideNext();
+            }}
+            style={{
+              objectFit: "cover",
+              width: "100%",
+              height: "100%",
+            }}
+          />
+        </div>
+      </SwiperSlide>
+    ))}
+  </Swiper>
+</div>
+
+
+
       {/* Upcommming programs section */}
-    <div className="py-5">  <UpcomingProgram  program={Allprogram?.data}/></div>
+    <div className="py-5">  <UpcomingProgram  program={Allprogram?.data}/></div> 
 
       {/* About */}
       <AboutMain  aboutMain={aboutData}/>

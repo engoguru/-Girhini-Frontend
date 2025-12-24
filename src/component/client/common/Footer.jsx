@@ -11,7 +11,7 @@ function Footer() {
           
 <div className="col-md-4 mb-4 text-center text-md-start">
   <h4 className="text-warning fw-bold mb-3">
-    Girhini Sawyam<span className="text-light"> Swarojgar Sangh</span>
+    Grihini Sawyam<span className="text-light"> Swarojgar Sangh</span>
   </h4>
 
   <p className="small text-secondary mb-2">
@@ -27,7 +27,8 @@ function Footer() {
       href="mailto:iacashokpathania.hp@gmail.com"
       className="text-secondary text-decoration-none d-block mt-1"
     >
-      ✉️ iacashokpathania.hp@gmail.com
+      {/* ✉️ iacashokpathania.hp@gmail.com */}
+      gssrs786@gmail.com
     </a>
   </p>
 
@@ -113,8 +114,8 @@ function Footer() {
                 </Link>
               </li>
               <li>
-                <Link to="/auth-user" className="text-secondary text-decoration-none">
-                  Join Us
+                <Link to="/about" className="text-secondary text-decoration-none">
+                 View Certificate
                 </Link>
               </li>
             </ul>
@@ -180,7 +181,7 @@ function Footer() {
 
         {/* Copyright */}
     <div className="text-center small text-secondary">
-  © {new Date().getFullYear()} Girhini Swayam Swarojgar Sangh. All Rights Reserved.
+  © {new Date().getFullYear()} Grihini Sawyam Swarojgar Sangh. All Rights Reserved.
 </div>
 
       </div>
