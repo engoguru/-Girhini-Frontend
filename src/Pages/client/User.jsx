@@ -6,6 +6,7 @@ import baseUrl from '../../utils/baseurl';
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { logoutUser } from '../../store/slice/userSlice';
+import MemberShip from './MemberShip';
 function User() {
   const navigate = useNavigate();
   const dispatch=useDispatch()
@@ -123,6 +124,8 @@ function User() {
     </div>
   </div>
 </div>
+<h3 className="mt-5">Membership Plans</h3>
+<MemberShip user={meDetail} />
 
 
 

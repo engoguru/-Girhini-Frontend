@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchAllBlog } from "../../store/slice/blogSlice";
 import { Facebook } from "lucide-react";
 import { fetchAllProgram } from "../../store/slice/programSlice";
+import Sponsor from "../../component/client/blog/Sponsor";
 function BlogPage() {
   const dispatch = useDispatch();
   const { blogAll } = useSelector((state) => state?.blog)
@@ -19,7 +20,7 @@ function BlogPage() {
 
   // === Fetch all programs on mount ===
   useEffect(() => {
-   dispatch(fetchAllProgram());
+    dispatch(fetchAllProgram());
     dispatch(fetchAllBlog())
   }, [dispatch]);
   // console.log(blogAll, "hgrth")
@@ -134,53 +135,7 @@ function BlogPage() {
 
           {/* ===== RIGHT: SIDEBAR ===== */}
           <div className="col-lg-4">
-            {/* Search Box */}
-            {/* <div className="card border-0 shadow-sm p-4 mb-4 rounded-4">
-              <h5 className="fw-bold mb-3">Search for blogs</h5>
-              <div className="input-group">
-                <input
-                  type="text"
-                  className="form-control rounded-start-pill"
-                  placeholder="Search Now"
-                />
-                <button className="btn btn-success rounded-end-pill">
-                  <i className="bi bi-search"></i>
-                </button>
-              </div>
-            </div> */}
-
-            {/* Recent Savers */}
-      {/* <div className="card border-0 shadow-sm p-4 mb-4 rounded-4">
-  <h5 className="fw-bolder mb-3 text-dark">Recent Savers</h5>
-  <ul className="list-unstyled mb-0">
-    <li className="mb-2">
-      <strong className="font-sm text-dark">R.K.Verma</strong> <br />
-      <small className="text-muted">40K Donated</small>
-    </li>
-    <li className="mb-2">
-      <strong className="font-sm text-dark">Anuj Shekhar</strong> <br />
-      <small className="text-muted">30K Donated</small>
-    </li>
-    <li>
-      <strong className="font-sm text-dark">Bill Gates</strong> <br />
-      <small className="text-muted">$50M Donated</small>
-    </li>
-  </ul>
-</div> */}
-
-
-            {/* Categories */}
-            {/* <div className="card border-0 shadow-sm p-4 mb-4 rounded-4">
-              <h5 className="fw-bold mb-3">Categories</h5>
-              <ul className="list-unstyled">
-                <li>Education</li>
-                <li>Health</li>
-                <li>Humanitarian</li>
-                <li>Environment</li>
-                <li>Animal Welfare</li>
-              </ul>
-            </div> */}
-
+     
             {/* Tags */}
             <div className="card border-0 shadow-sm p-4 mb-4 rounded-4">
               <h5 className="fw-bold mb-3">Tags</h5>
@@ -194,7 +149,8 @@ function BlogPage() {
                 )}
               </div>
             </div>
-
+            {/* sponsor doner */}
+            <Sponsor />
             {/* About NGO */}
             <div className="card border-0 shadow-sm p-4 mb-4 rounded-4 text-center">
               <img
@@ -206,15 +162,15 @@ function BlogPage() {
               <p className="text-muted small">
                 Find the blog by its last entering any keyword you want to read.
               </p>
-         <button className="btn btn-outline-warning text-white rounded-pill">
-  <a
-    href="https://www.facebook.com/share/v/1FsxeN2uo8/"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    Follow Us On <Facebook size={22} strokeWidth={1.5} />
-  </a>
-</button>
+              <button className="btn btn-outline-warning text-white rounded-pill">
+                <a
+                  href="https://www.facebook.com/share/v/1FsxeN2uo8/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Follow Us On <Facebook size={22} strokeWidth={1.5} />
+                </a>
+              </button>
 
             </div>
           </div>
